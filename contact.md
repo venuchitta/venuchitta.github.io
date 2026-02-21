@@ -18,11 +18,11 @@ permalink: /contact/
     </p>
 
     <div class="contact-cards">
-      <a href="mailto:venuchitta@gmail.com" class="contact-card">
+      <a href="mailto:venu.chitta1992@gmail.com" class="contact-card">
         <div class="contact-card-icon project-icon-indigo">✉️</div>
         <div>
           <p class="contact-card-label">Email</p>
-          <p class="contact-card-value">venuchitta@gmail.com</p>
+          <p class="contact-card-value">venu.chitta1992@gmail.com</p>
         </div>
       </a>
 

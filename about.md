@@ -16,7 +16,7 @@ permalink: /about/
       <a href="https://linkedin.com/in/venuchitta" target="_blank" rel="noopener" class="about-link">
         <span>◈</span> linkedin.com/in/venuchitta
       </a>
-      <a href="mailto:venuchitta@gmail.com" class="about-link">
+      <a href="mailto:venu.chitta1992@gmail.com" class="about-link">
         <span>✉</span> venuchitta@gmail.com
       </a>
     </div>
@@ -79,7 +79,7 @@ permalink: /about/
     <hr />
 
     <p>
-      Best way to reach me: <a href="mailto:venuchitta@gmail.com">email</a> or
+      Best way to reach me: <a href="mailto:venu.chitta1992@gmail.com">email</a> or
       <a href="https://linkedin.com/in/venuchitta" target="_blank" rel="noopener">LinkedIn</a>.
     </p>
   </div>
