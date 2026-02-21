@@ -1,0 +1,35 @@
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <a href="{{ '/' | relative_url }}" class="site-logo">
+        <span class="logo-vc">VC</span>
+        <span class="logo-name">Venu Chitta</span>
+      </a>
+      <p class="footer-tagline">Software Engineer · Writing about code, systems & ideas.</p>
+    </div>
+
+    <div class="footer-links">
+      <div class="footer-col">
+        <p class="footer-col-title">Site</p>
+        <a href="{{ '/about/' | relative_url }}">About</a>
+        <a href="{{ '/blog/' | relative_url }}">Blog</a>
+        <a href="{{ '/projects/' | relative_url }}">Projects</a>
+        <a href="{{ '/experience/' | relative_url }}">Experience</a>
+        <a href="{{ '/contact/' | relative_url }}">Contact</a>
+      </div>
+      <div class="footer-col">
+        <p class="footer-col-title">Connect</p>
+        <a href="https://github.com/{{ site.author.github }}" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://linkedin.com/in/{{ site.author.linkedin }}" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://twitter.com/{{ site.author.twitter }}" target="_blank" rel="noopener">Twitter / X</a>
+        <a href="{{ '/feed.xml' | relative_url }}">RSS Feed</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <div class="container">
+      <p>© {{ 'now' | date: "%Y" }} Venu Chitta · Built with <a href="https://jekyllrb.com" target="_blank" rel="noopener">Jekyll</a> · Hosted on <a href="https://pages.github.com" target="_blank" rel="noopener">GitHub Pages</a></p>
+    </div>
+  </div>
+</footer>

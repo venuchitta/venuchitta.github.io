@@ -1,0 +1,39 @@
+title: Venu Chitta
+description: Software Engineer — writing about code, systems, and ideas.
+url: "https://venuchitta.github.io"
+baseurl: ""
+
+author:
+  name: Venu Chitta
+  email: venuchitta@gmail.com
+  github: venuchitta
+  twitter: venuchitta
+  linkedin: venuchitta
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+permalink: /blog/:year/:month/:day/:title/
+
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    css_class: "highlight"
+
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+# Pagination
+paginate: 6
+paginate_path: "/blog/page:num/"
+
+# Exclude from build
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - node_modules/
+  - vendor/

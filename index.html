@@ -1,5 +1,134 @@
-Hello world check out my homepage!
+---
+layout: default
+title: Home
+---
 
+<!-- Hero -->
+<section class="hero">
+  <div class="container hero-inner">
+    <span class="hero-eyebrow">// Hello, I'm</span>
+    <h1 class="hero-title">
+      <span class="hero-title-gradient">Venu Chitta</span><br />
+      Software Engineer
+    </h1>
+    <p class="hero-subtitle">
+      I build reliable systems and write about the ideas behind them —
+      distributed architectures, developer tooling, and the craft of software.
+    </p>
+    <div class="hero-actions">
+      <a href="/blog/" class="btn btn-primary">Read the Blog →</a>
+      <a href="/about/" class="btn btn-outline">About Me</a>
+    </div>
+  </div>
+</section>
 
-----------------------------
-http://venuchitta.github.io
+<!-- Recent Articles -->
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag section-tag-indigo">Writing</span>
+      <h2 class="section-title">Recent Articles</h2>
+      <p class="section-subtitle">Thoughts on engineering, systems design, and the tools we build with.</p>
+    </div>
+
+    {% assign recent_posts = site.posts | limit: 3 %}
+    {% if recent_posts.size > 0 %}
+      {% assign first_post = recent_posts | first %}
+      <!-- Featured Post -->
+      <a href="{{ first_post.url | relative_url }}" class="featured-article" style="text-decoration:none">
+        <div>
+          <span class="featured-badge">✦ Featured Post</span>
+          <h3 class="featured-title">{{ first_post.title }}</h3>
+          <p class="featured-excerpt">{{ first_post.excerpt | strip_html | truncatewords: 35 }}</p>
+          <div class="post-meta">
+            <time>{{ first_post.date | date: "%B %-d, %Y" }}</time>
+            <span class="post-meta-sep">·</span>
+            <span>{% assign words = first_post.content | number_of_words %}{% if words < 360 %}1 min{% elsif words < 720 %}2 min{% else %}{{ words | divided_by: 180 }} min{% endif %} read</span>
+          </div>
+        </div>
+        <div class="featured-visual">✍️</div>
+      </a>
+
+      <!-- More Posts Grid -->
+      {% if recent_posts.size > 1 %}
+      <div class="posts-grid">
+        {% for post in recent_posts offset:1 %}
+        <article class="post-card">
+          <div class="post-card-accent"></div>
+          <div class="post-card-body">
+            {% if post.categories %}
+            <p class="post-card-category">{{ post.categories | first }}</p>
+            {% endif %}
+            <h3 class="post-card-title">
+              <a href="{{ post.url | relative_url }}" style="color:inherit;text-decoration:none">{{ post.title }}</a>
+            </h3>
+            <p class="post-card-excerpt">{{ post.excerpt | strip_html | truncatewords: 25 }}</p>
+            <div class="post-card-meta">
+              <time>{{ post.date | date: "%b %-d, %Y" }}</time>
+              <a href="{{ post.url | relative_url }}" class="post-card-read-more">Read →</a>
+            </div>
+          </div>
+        </article>
+        {% endfor %}
+      </div>
+      {% endif %}
+    {% else %}
+    <div style="text-align:center; padding: 3rem 0; color: var(--text-muted);">
+      <p style="font-size: 1.1rem; margin-bottom: 1rem;">Articles coming soon!</p>
+      <a href="/blog/" class="btn btn-outline">See all posts</a>
+    </div>
+    {% endif %}
+
+    <div style="text-align:center; margin-top: 3rem;">
+      <a href="/blog/" class="btn btn-ghost">All Articles →</a>
+    </div>
+  </div>
+</section>
+
+<!-- About Snippet -->
+<section class="section section-alt">
+  <div class="container">
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap: 4rem; align-items:center">
+      <div>
+        <span class="section-tag section-tag-violet">About Me</span>
+        <h2 class="section-title" style="text-align:left; margin-bottom:1rem">Building software,<br /><span class="gradient-text">sharing what I learn.</span></h2>
+        <p style="color:var(--text-muted); font-size:1.05rem; line-height:1.8; margin-bottom:2rem">
+          I'm a software engineer passionate about distributed systems, developer experience, and writing
+          clear, maintainable code. I believe in learning in public — this site is where I share my notes,
+          experiments, and ideas.
+        </p>
+        <a href="/about/" class="btn btn-outline">More About Me →</a>
+      </div>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem">
+        <div style="padding:1.5rem; background:var(--bg); border:1px solid var(--border); border-radius:var(--radius-lg); text-align:center">
+          <div style="font-family:var(--font-display); font-size:2rem; font-weight:700; background:var(--grad-primary); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text">∞</div>
+          <div style="font-size:0.85rem; color:var(--text-muted); margin-top:0.5rem">Always Learning</div>
+        </div>
+        <div style="padding:1.5rem; background:var(--bg); border:1px solid var(--border); border-radius:var(--radius-lg); text-align:center">
+          <div style="font-family:var(--font-display); font-size:2rem; font-weight:700; background:var(--grad-warm); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text">✍️</div>
+          <div style="font-size:0.85rem; color:var(--text-muted); margin-top:0.5rem">Writing Weekly</div>
+        </div>
+        <div style="padding:1.5rem; background:var(--bg); border:1px solid var(--border); border-radius:var(--radius-lg); text-align:center">
+          <div style="font-family:var(--font-display); font-size:2rem; font-weight:700; background:var(--grad-cool); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text">⚙️</div>
+          <div style="font-size:0.85rem; color:var(--text-muted); margin-top:0.5rem">Systems Thinker</div>
+        </div>
+        <div style="padding:1.5rem; background:var(--bg); border:1px solid var(--border); border-radius:var(--radius-lg); text-align:center">
+          <div style="font-family:var(--font-display); font-size:2rem; font-weight:700; color:var(--teal);">🚀</div>
+          <div style="font-size:0.85rem; color:var(--text-muted); margin-top:0.5rem">Shipping Fast</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Newsletter CTA -->
+<section class="newsletter-section">
+  <div class="container newsletter-inner">
+    <h2 class="newsletter-title">Stay in the loop</h2>
+    <p class="newsletter-subtitle">New articles on engineering, systems, and code — no spam, ever.</p>
+    <form class="newsletter-form" action="#" method="post">
+      <input type="email" name="email" placeholder="your@email.com" class="newsletter-input" required />
+      <button type="submit" class="btn btn-primary">Subscribe</button>
+    </form>
+  </div>
+</section>

@@ -1,0 +1,119 @@
+---
+layout: default
+---
+<article class="post-article">
+  <header class="post-header">
+    <div class="container post-header-inner">
+      {% if page.categories %}
+      <div class="post-categories">
+        {% for cat in page.categories %}
+        <span class="post-category">{{ cat }}</span>
+        {% endfor %}
+      </div>
+      {% endif %}
+
+      <h1 class="post-title">{{ page.title }}</h1>
+
+      {% if page.excerpt and page.show_excerpt != false %}
+      <p class="post-excerpt">{{ page.excerpt | strip_html | truncatewords: 30 }}</p>
+      {% endif %}
+
+      <div class="post-meta">
+        <time datetime="{{ page.date | date_to_xmlschema }}">
+          {{ page.date | date: "%B %-d, %Y" }}
+        </time>
+        <span class="post-meta-sep">·</span>
+        <span class="post-reading-time">
+          {% assign words = content | number_of_words %}
+          {% if words < 360 %}1 min read
+          {% elsif words < 720 %}2 min read
+          {% else %}{{ words | divided_by: 180 }} min read{% endif %}
+        </span>
+        {% if page.tags %}
+        <span class="post-meta-sep">·</span>
+        <span class="post-tags">
+          {% for tag in page.tags %}
+          <span class="post-tag">{{ tag }}</span>
+          {% endfor %}
+        </span>
+        {% endif %}
+      </div>
+    </div>
+  </header>
+
+  {% if page.image %}
+  <div class="post-cover">
+    <div class="container">
+      <img src="{{ page.image | relative_url }}" alt="{{ page.title }}" class="post-cover-img" />
+    </div>
+  </div>
+  {% endif %}
+
+  <div class="container post-layout">
+    <div class="post-content prose">
+      {{ content }}
+    </div>
+
+    <aside class="post-sidebar">
+      <div class="sidebar-toc sticky-toc">
+        <p class="toc-title">On this page</p>
+        <nav id="toc" class="toc-nav"></nav>
+      </div>
+    </aside>
+  </div>
+
+  <footer class="post-footer">
+    <div class="container">
+      <div class="post-nav">
+        {% if page.previous.url %}
+        <a href="{{ page.previous.url | relative_url }}" class="post-nav-link post-nav-prev">
+          <span class="post-nav-label">← Previous</span>
+          <span class="post-nav-title">{{ page.previous.title }}</span>
+        </a>
+        {% endif %}
+        {% if page.next.url %}
+        <a href="{{ page.next.url | relative_url }}" class="post-nav-link post-nav-next">
+          <span class="post-nav-label">Next →</span>
+          <span class="post-nav-title">{{ page.next.title }}</span>
+        </a>
+        {% endif %}
+      </div>
+
+      <div class="back-to-blog">
+        <a href="{{ '/blog/' | relative_url }}" class="btn btn-ghost">← All Articles</a>
+      </div>
+    </div>
+  </footer>
+</article>
+
+<script>
+  // Auto-generate Table of Contents
+  const tocNav = document.getElementById('toc');
+  const headings = document.querySelectorAll('.post-content h2, .post-content h3');
+
+  if (headings.length > 1 && tocNav) {
+    headings.forEach((h, i) => {
+      if (!h.id) h.id = 'heading-' + i;
+      const a = document.createElement('a');
+      a.href = '#' + h.id;
+      a.textContent = h.textContent;
+      a.className = 'toc-link toc-' + h.tagName.toLowerCase();
+      tocNav.appendChild(a);
+    });
+  } else if (tocNav) {
+    tocNav.closest('.sidebar-toc').style.display = 'none';
+  }
+
+  // Highlight active TOC item on scroll
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      const id = entry.target.getAttribute('id');
+      const tocLink = tocNav && tocNav.querySelector(`a[href="#${id}"]`);
+      if (tocLink) {
+        tocLink.classList.toggle('toc-active', entry.isIntersecting);
+      }
+    });
+  }, { rootMargin: '0px 0px -70% 0px' });
+
+  headings.forEach(h => observer.observe(h));
+</script>
