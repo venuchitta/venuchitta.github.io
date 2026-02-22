@@ -13,7 +13,7 @@ author:
 # Analytics
 # Sign up free at https://www.goatcounter.com — then set your site code here.
 # e.g. if your dashboard is at venuchitta.goatcounter.com, set: venuchitta
-goatcounter_code: ""
+goatcounter_code: "venuchitta"
 
 # Build settings
 markdown: kramdown
