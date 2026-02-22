@@ -10,6 +10,11 @@ author:
   twitter: venuchitta
   linkedin: venuchitta
 
+# Analytics
+# Sign up free at https://www.goatcounter.com — then set your site code here.
+# e.g. if your dashboard is at venuchitta.goatcounter.com, set: venuchitta
+goatcounter_code: ""
+
 # Build settings
 markdown: kramdown
 highlighter: rouge

@@ -26,6 +26,12 @@
 
   {% include footer.html %}
 
+  <!-- GoatCounter Analytics — set goatcounter_code in _config.yml -->
+  {% if site.goatcounter_code %}
+  <script data-goatcounter="https://{{ site.goatcounter_code }}.goatcounter.com/count"
+          async src="//gc.zgo.at/count.js"></script>
+  {% endif %}
+
   <script>
     // Mobile nav toggle
     const navToggle = document.getElementById('nav-toggle');
